@@ -6,7 +6,7 @@ const {
   createUser,
   updateUser,
   deleteUser
-} = require('../../controllers/thought-controller');
+} = require('../../controllers/user-controller');
 
 // /api/pizzas
 router
@@ -16,9 +16,14 @@ router
 
 // /api/pizzas/:id
 router
-  .route('/:id')
+  .route('/:userId')
   .get(getUserById)
   .put(updateUser)
+  .delete(deleteUser);
+
+  router
+  .route('/:userId/friends/:friendId')
+  .post(createUser)
   .delete(deleteUser);
 
 module.exports = router;
